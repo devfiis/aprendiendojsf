@@ -3,4 +3,4 @@
 Tutorial Básico de Java Server Faces - Prime Faces
 
 
-Base de Datos: aprendiendojsf/aprendiendojsf.sql
+Base de Datos: lib/aprendiendojsf.sql
