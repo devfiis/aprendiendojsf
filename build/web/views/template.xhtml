@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="#{appBean.baseUrl}resources/css/default.css" rel="stylesheet" type="text/css" />
+        <link href="#{appBean.baseUrl}resources/css/cssLayout.css" rel="stylesheet" type="text/css" />
+        <title>Facelets Template</title>
+    </h:head>
+
+    <h:body>
+        <div id="conteiner">
+            <div id="top" class="ui-widget-header ui-corner-all">
+                <ui:insert name="top">Top</ui:insert>
+            </div>
+            <div id="menu">
+                <h:form>
+                    <p:menubar>  
+                        <p:submenu label="Seguridad" icon="ui-icon-document">  
+                            <p:menuitem value="Usuario" url="#{appBean.basePath}usuario/index.xhtml" />  
+                            <p:separator />  
+                            <p:menuitem value="Quit" url="#" />  
+                        </p:submenu>  
+
+                        <p:submenu label="Edit" icon="ui-icon-pencil">  
+                            <p:menuitem value="Undo" url="#" icon="ui-icon-arrowreturnthick-1-w" />  
+                            <p:menuitem value="Redo" url="#" icon="ui-icon-arrowreturnthick-1-e" />  
+                        </p:submenu>  
+
+                        <p:submenu label="Help" icon="ui-icon-help">  
+                            <p:menuitem value="Contents" url="#" />  
+                            <p:submenu label="Search" icon="ui-icon-search">  
+                                <p:submenu label="Text">  
+                                    <p:menuitem value="Workspace" url="#" />  
+                                </p:submenu>  
+                                <p:menuitem value="File" url="#" />  
+                            </p:submenu>  
+                        </p:submenu>  
+
+                        <p:submenu label="Actions" icon="ui-icon-gear">  
+                            <p:submenu label="Ajax" icon="ui-icon-refresh">  
+                                <p:menuitem value="Save" actionListener="#{menuBean.save}" icon="ui-icon-disk"/>  
+                                <p:menuitem value="Update" actionListener="#{menuBean.update}" icon="ui-icon-arrowrefresh-1-w"/>  
+                            </p:submenu>  
+                            <p:submenu label="Non-Ajax" icon="ui-icon-newwin">  
+                                <p:menuitem value="Delete" actionListener="#{menuBean.delete}" icon="ui-icon-close" ajax="false"/>  
+                            </p:submenu>  
+                        </p:submenu>  
+                        <p:menuitem value="Salir" actionListener="#{loginBean.logout}" icon="ui-icon-close" oncomplete="handleLoginRequest(xhr, status, args)"/>  
+                    </p:menubar>  
+                </h:form>  
+            </div>
+            <div id="content" class="center_content ui-widget-content ui-corner-all">
+                <ui:insert name="content">Content</ui:insert>
+            </div>
+            <div id="bottom" class="ui-widget-header ui-corner-all">
+                <ui:insert name="bottom"> &copy; 2013</ui:insert>
+            </div>
+        </div>
+        <script type="text/javascript">
+            function handleLoginRequest(xhr, status, args) {
+                if(args.loggetOut) {
+                    location.href =  args.ruta;
+                }
+            }
+        </script>
+    </h:body>
+
+</html>

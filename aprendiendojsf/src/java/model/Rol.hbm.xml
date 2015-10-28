@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 26-mar-2013 19:48:29 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.Rol" table="rol" catalog="aprendiendojsf">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="30" not-null="true" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="100" />
+        </property>
+        <property name="estado" type="java.lang.Boolean">
+            <column name="estado" />
+        </property>
+        <set name="rolmenus" inverse="true">
+            <key>
+                <column name="rol_id" not-null="true" />
+            </key>
+            <one-to-many class="model.Rolmenu" />
+        </set>
+        <set name="usuarios" inverse="true">
+            <key>
+                <column name="rol_id" not-null="true" />
+            </key>
+            <one-to-many class="model.Usuario" />
+        </set>
+    </class>
+</hibernate-mapping>

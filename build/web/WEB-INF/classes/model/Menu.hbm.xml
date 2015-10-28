@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 26-mar-2013 19:48:29 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.Menu" table="menu" catalog="aprendiendojsf">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="menu" class="model.Menu" fetch="select">
+            <column name="menu_id" />
+        </many-to-one>
+        <property name="nivel" type="int">
+            <column name="nivel" not-null="true" />
+        </property>
+        <property name="orden" type="int">
+            <column name="orden" not-null="true" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="nombre" length="80" not-null="true" />
+        </property>
+        <property name="url" type="string">
+            <column name="url" length="120" />
+        </property>
+        <property name="icono" type="string">
+            <column name="icono" length="30" />
+        </property>
+        <property name="estado" type="java.lang.Boolean">
+            <column name="estado" />
+        </property>
+        <set name="rolmenus" inverse="true">
+            <key>
+                <column name="menu_id" not-null="true" />
+            </key>
+            <one-to-many class="model.Rolmenu" />
+        </set>
+        <set name="menus" inverse="true">
+            <key>
+                <column name="menu_id" />
+            </key>
+            <one-to-many class="model.Menu" />
+        </set>
+    </class>
+</hibernate-mapping>
